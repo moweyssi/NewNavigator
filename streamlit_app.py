@@ -87,14 +87,14 @@ def load_data():
     df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
     df                          = df[df.Included == "IN"]
     df['stejna velikost']       = 0.02
-    df['CZ_EU_podil_2022']      = 100 * df['CZ_EU_podil_2022'] 
-    df['EU_svetovy_podil_2022'] = 100 * df['EU_svetovy_podil_2022'] 
-    df['CZ_svetovy_podil_2022'] = 100 * df['CZ_svetovy_podil_2022'] 
-    df['CZ_export_2022']        = USD_to_czk*df['CZ_export_2022'] 
+    df['CZ-EU Podíl 2022 %']      = 100 * df['CZ-EU Podíl 2022 %'] 
+    df['EU Světový Podíl 2022 %'] = 100 * df['EU Světový Podíl 2022 %'] 
+    df['CZ Světový Podíl 2022 %'] = 100 * df['CZ Světový Podíl 2022 %'] 
+    df['CZ Export 2022 CZK']        = USD_to_czk*df['CZ Export 2022 CZK'] 
     #df['EU_Import_2022']        = USD_to_czk*df['EU_Import_2022'] 
     #df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
-    df['Svet_export_2022']      = USD_to_czk*df['Svet_export_2022'] 
-    df['EU_export_2022']        = USD_to_czk*df['EU_export_2022'] 
+    df['Světový export 2022 CZK']      = USD_to_czk*df['Světový export 2022 CZK'] 
+    df['EU Export 2022 CZK']        = USD_to_czk*df['EU Export 2022 CZK'] 
     #df['EU_Total_Export_25_30'] = USD_to_czk*df['EU_Total_Export_25_30'] 
     #df['CZ_Total_Export_25_30'] = USD_to_czk*df['CZ_Total_Export_25_30'] 
     #df['EU_2030_export']        = USD_to_czk*df['EU_2030_export'] 
@@ -105,37 +105,6 @@ def load_data():
 
 df = load_data()
 
-
-
-# Column display names dictionary
-column_display_names = {
-    'Skupina': 'Skupina',
-    'Podskupina': 'Podskupina',
-    'Kategorie_vyrobku': 'Kategorie výrobku',
-    'Pribuznost_CZ_2022': 'Příbuznost CZ 2022',
-    'Vyhoda_CZ_2022': 'Výhoda CZ 2022',
-    'Koncentrace_trhu_2022': 'Koncentrace světového trhu 2022',
-    'EU_HHI_2022':'Koncentrace evropského exportu 2022',
-    'Komplexita_vyrobku_2022': 'Komplexita výrobku 2022',
-    'CZ_export_2022': 'CZ Export 2022 CZK',
-    #'EU_Import_2022': 'EU Import 2022 CZK',
-    #'CZ_Import_2022': 'CZ Import 2022 CZK',
-    'Svet_export_2022': 'Světový export 2022 CZK',
-    'EU_export_2022': 'EU Export 2022 CZK',
-    'EU_svetovy_podil_2022': 'EU Světový Podíl 2022 %',
-    'CZ_svetovy_podil_2022': 'CZ Světový Podíl 2022 %',
-    'EU_Top_Exporter_2022':'EU Největší Exportér 2022',
-    'CZ_EU_podil_2022': 'CZ-EU Podíl 2022 %',
-    #'CZ_2030_export': 'CZ 2030 Export CZK',
-    #'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30 CZK',
-    #'EU_2030_export': 'EU 2030 Export CZK',
-    #'EU_Total_Export_25_30': 'EU Celkový Export 25-30 CZK',
-    #'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Předpověď',
-    'stejna velikost': 'Stejná Velikost'
-}
-
-# Invert the dictionary to map display names back to column names
-display_to_column = {v: k for k, v in column_display_names.items()}
 
 # Create lists of display names for the sidebar
 ji_display_names = ['Skupina', 'Podskupina', 'Kategorie výrobku']
@@ -217,8 +186,7 @@ with col2:
 
 # Display existing filters using display names
 for i, filter in enumerate(st.session_state.filters):
-    filter_col_display = st.sidebar.selectbox(f"Filter {i+1} column", plot_display_names, key=f"filter_col_{i}")
-    filter_col = display_to_column[filter_col_display]
+    filter_col= st.sidebar.selectbox(f"Filter {i+1} column", plot_display_names, key=f"filter_col_{i}")
     filter_min, filter_max = df[filter_col].min(), df[filter_col].max()
     filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
     st.session_state.filters[i]['column'] = filter_col
@@ -276,8 +244,8 @@ else:
                      y=y_axis,
                      color=color,
                      color_discrete_map=color_discrete_map,  # Hard-code the colors
-                     labels={x_axis: x_axis_display, y_axis: y_axis_display},
-                     title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
+                     labels={x_axis: x_axis, y_axis: y_axis},
+                     title=f'{x_axis} vs {y_axis} barva podle {color}',
                      hover_data=hover_data,
                      #height=700,
                      opacity=0.7,
