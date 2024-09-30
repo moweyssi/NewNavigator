@@ -94,10 +94,10 @@ def load_data():
     #df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
     df['Světový export 2022 CZK']      = USD_to_czk*df['Světový export 2022 CZK'] 
     df['EU Export 2022 CZK']        = USD_to_czk*df['EU Export 2022 CZK'] 
-    #df['EU_Total_Export_25_30'] = USD_to_czk*df['EU_Total_Export_25_30'] 
-    #df['CZ_Total_Export_25_30'] = USD_to_czk*df['CZ_Total_Export_25_30'] 
-    #df['EU_2030_export']        = USD_to_czk*df['EU_2030_export'] 
-    #df['CZ_2030_export']        = USD_to_czk*df['CZ_2030_export'] 
+    df['EU Celkový Export 25-30 CZK'] = USD_to_czk*df['EU Celkový Export 25-30 CZK'] 
+    df['CZ Celkový Export 25-30 CZK'] = USD_to_czk*df['CZ Celkový Export 25-30 CZK'] 
+    df['EU 2030 Export CZK']        = USD_to_czk*df['EU 2030 Export CZK'] 
+    df['CZ 2030 Export CZK']        = USD_to_czk*df['CZ 2030 Export CZK'] 
     df['HS_ID']                 = df['HS_ID'].astype(str)
 
     return df
@@ -123,11 +123,11 @@ plot_display_names = [
     'ubiquity',
     'density',
     'cog',
-    #'CZ 2030 Export CZK',
-    #'CZ Celkový Export 25-30 CZK',
-    #'EU 2030 Export CZK',
-    #'EU Celkový Export 25-30 CZK',
-    #'CAGR 2022-2030 Předpověď',
+    'CZ 2030 Export CZK',
+    'CZ Celkový Export 25-30 CZK',
+    'EU 2030 Export CZK',
+    'EU Celkový Export 25-30 CZK',
+    'CAGR 2022-2030 Předpověď',
     'Stejná Velikost'
 ]
 
@@ -137,7 +137,7 @@ hover_display_data = [
     'Název Produktu',
     #'Produkt_HS4',
     #'Produkt_HS2',
-    #'CZ Celkový Export 25-30 CZK',
+    'CZ Celkový Export 25-30 CZK',
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
     'Koncentrace světového trhu 2022',
@@ -152,13 +152,13 @@ hover_display_data = [
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
-    #'CZ 2030 Export CZK',
-    #'CZ Celkový Export 25-30 CZK',
-    #'EU 2030 Export',
-    #'EU Celkový Export 25-30 CZK',
-    #'CAGR 2022-2030 Předpověď',
+    'CZ 2030 Export CZK',
+    'CZ Celkový Export 25-30 CZK',
+    'EU 2030 Export',
+    'EU Celkový Export 25-30 CZK',
+    'CAGR 2022-2030 Předpověď',
     'Zdroj',
-    #'IS_REALCAGR'
+    'IS_REALCAGR'
 ]
 
 # Sidebar selection boxes using display names
@@ -276,10 +276,10 @@ st.plotly_chart(fig)
 st.subheader("Big picture:")
 
 
-#st.code("Vybraný český export za rok 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
-#        "Vybraný český export 2025 až 2030: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
-#        "Vybraný evropský export 2025 až 203: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
-#
+st.code("Vybraný český export za rok 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ Export 2022 CZK']))+" CZK\n"+
+        "Vybraný český export 2025 až 2030: "+ "{:,.0f}".format(sum(filtered_df['CZ Celkový Export 25-30 CZK']))+" CZK\n"+
+        "Vybraný evropský export 2025 až 203: "+ "{:,.0f}".format(sum(filtered_df['EU Celkový Export 25-30 CZK']))+" CZK")
+
 
 mybuff = StringIO()
 fig.write_html(mybuff, include_plotlyjs='cdn')
