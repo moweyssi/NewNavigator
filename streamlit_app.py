@@ -84,6 +84,38 @@ color_discrete_map = {
 def load_data():
     # Replace with the path to your data file
     df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
+    url = 'https://docs.google.com/spreadsheets/d/1M4_XVEXApUbnklbRwX1dqDVYIDStX4Uk/pub?gid=884468600&single=true&output=csv'
+    taxonomy = pd.read_csv(url)
+    CZE = pd.read_csv('CZE.csv')
+    GreenProducts = taxonomy.merge(CZE,how='left',left_on='HS_ID',right_on='prod')
+    # Calculate 2030 export value
+    GreenProducts['CountryExport2030'] = GreenProducts['ExportValue'] * (1 + GreenProducts['CAGR_2022_30_FORECAST']) ** 8
+    GreenProducts['EUExport2030'] = GreenProducts['EUExport'] * (1 + GreenProducts['CAGR_2022_30_FORECAST']) ** 8
+
+    # Calculate Total Export Value from 2025 to 2030
+    # We calculate for each year and sum up
+    GreenProducts['CountryExport_25_30'] = sum(GreenProducts['ExportValue'] * (1 + GreenProducts['CAGR_2022_30_FORECAST']) ** i for i in range(3, 9))
+    GreenProducts['EUExport_25_30'] = sum(GreenProducts['EUExport'] * (1 + GreenProducts['CAGR_2022_30_FORECAST']) ** i for i in range(3, 9))
+
+    df = GreenProducts.rename(columns={'ExportValue': 'CZ Export 2022 CZK',
+                              'pci': 'Komplexita výrobku 2022',
+                               'relatedness': 'Příbuznost CZ 2022',
+                               'WorldExport':'Světový export 2022 CZK',
+                               'EUExport':'EU Export 2022 CZK',
+                               'EUWorldMarketShare':'EU Světový Podíl 2022 %',
+                               'euhhi':'Koncentrace evropského exportu 2022',
+                               'hhi':'Koncentrace světového trhu 2022',
+                               'CZE_WorldMarketShare':'CZ Světový Podíl 2022 %',
+                               'CZE_EUMarketShare':'CZ-EU Podíl 2022 %',
+                               'rca':'Výhoda CZ 2022',
+                               'EUTopExporter':'EU Největší Exportér 2022',
+                               'POPIS':'Název Produktu',
+                               'CountryExport2030':'CZ 2030 Export CZK',
+                               'EUExport2030':'EU 2030 Export CZK',
+                               'CountryExport_25_30':'CZ Celkový Export 25-30 CZK',
+                               'EUExport_25_30':'EU Celkový Export 25-30 CZK',
+                               'CAGR_2022_30_FORECAST':'CAGR 2022-2030 Předpověď'
+                               })
     df                          = df[df.Included == "IN"]
     df['stejna velikost']       = 0.02
     df['CZ-EU Podíl 2022 %']      = 100 * df['CZ-EU Podíl 2022 %'] 
