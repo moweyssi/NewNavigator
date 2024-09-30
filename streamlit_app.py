@@ -92,7 +92,7 @@ def load_data():
     df['CZ_svetovy_podil_2022'] = 100 * df['CZ_svetovy_podil_2022'] 
     df['CZ_export_2022']        = USD_to_czk*df['CZ_export_2022'] 
     #df['EU_Import_2022']        = USD_to_czk*df['EU_Import_2022'] 
-    df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
+    #df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
     df['Svet_export_2022']      = USD_to_czk*df['Svet_export_2022'] 
     df['EU_export_2022']        = USD_to_czk*df['EU_export_2022'] 
     #df['EU_Total_Export_25_30'] = USD_to_czk*df['EU_Total_Export_25_30'] 
