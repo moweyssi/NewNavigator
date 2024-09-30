@@ -193,7 +193,7 @@ hover_display_data = [
 
 # Sidebar selection boxes using display names
 x_axis_display      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=0)
-y_axis_display      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=11)
+y_axis_display      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=4)
 markersize_display  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=5)
 color_display       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 hover_info_display  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
