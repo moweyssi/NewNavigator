@@ -313,10 +313,10 @@ st.plotly_chart(fig)
 st.subheader("Big picture:")
 
 
-st.code("Vybraný český export za rok 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
-        "Vybraný český export 2025 až 2030: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
-        "Vybraný evropský export 2025 až 203: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
-
+#st.code("Vybraný český export za rok 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
+#        "Vybraný český export 2025 až 2030: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
+#        "Vybraný evropský export 2025 až 203: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
+#
 
 mybuff = StringIO()
 fig.write_html(mybuff, include_plotlyjs='cdn')
