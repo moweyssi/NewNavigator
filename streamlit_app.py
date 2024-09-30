@@ -104,7 +104,7 @@ def load_data():
 
 df = load_data()
 
-
+st.dataframe(df)
 # Create lists of display names for the sidebar
 ji_display_names = ['Skupina', 'Podskupina', 'Kategorie výrobku']
 plot_display_names = [
