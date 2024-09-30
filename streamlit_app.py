@@ -83,7 +83,6 @@ color_discrete_map = {
 # Load data
 def load_data():
     # Replace with the path to your data file
-    #df = pd.read_csv("Plna_databaze_produktu.csv")
     df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
     df                          = df[df.Included == "IN"]
     df['stejna velikost']       = 0.02
@@ -122,6 +121,9 @@ plot_display_names = [
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
+    'Ubiquity',
+    'Density',
+    'Cog',
     #'CZ 2030 Export CZK',
     #'CZ Celkový Export 25-30 CZK',
     #'EU 2030 Export CZK',
