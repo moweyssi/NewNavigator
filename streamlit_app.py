@@ -192,22 +192,16 @@ hover_display_data = [
 ]
 
 # Sidebar selection boxes using display names
-x_axis_display      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=0)
-y_axis_display      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=4)
-markersize_display  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=5)
-color_display       = st.sidebar.selectbox("Barva dle:", ji_display_names)
-hover_info_display  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
+x_axis      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=0)
+y_axis      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=4)
+markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=5)
+color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
+hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
 
-# Map display names back to column names
-x_axis     = display_to_column[x_axis_display]
-y_axis     = display_to_column[y_axis_display]
-markersize = display_to_column[markersize_display]
-color      = display_to_column[color_display]
-hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 
 # Sidebar for filtering the color variable
 color_values    = df[color].unique()
-selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color_display}", options=color_values, default=color_values)
+selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color}", options=color_values, default=color_values)
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -267,7 +261,7 @@ if HS_select == []:
                      y=y_axis,
                      color=color,
                      color_discrete_map=color_discrete_map,  # Hard-code the colors
-                     labels={x_axis: x_axis_display, y_axis: y_axis_display},
+                     labels={x_axis: x_axis, y_axis: y_axis},
                      #title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
                      #height='100%',
