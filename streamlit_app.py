@@ -84,8 +84,7 @@ color_discrete_map = {
 def load_data():
     # Replace with the path to your data file
     #df = pd.read_csv("Plna_databaze_produktu.csv")
-    url                         = 'https://docs.google.com/spreadsheets/d/1M4_XVEXApUbnklbRwX1dqDVYIDStX4Uk/pub?gid=891291031&single=true&output=csv'
-    df                          = pd.read_csv(url)
+    df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
     df                          = df[df.Included == "IN"]
     df['stejna velikost']       = 0.02
     df['CZ_EU_podil_2022']      = 100 * df['CZ_EU_podil_2022'] 
