@@ -5,6 +5,7 @@ from io import StringIO
 import plotly.io as pio
 from PIL import Image
 im = Image.open("logo.svg")
+
 st.set_page_config(
     page_title="Mapa Příležitostí",
     page_icon=im
