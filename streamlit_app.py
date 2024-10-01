@@ -4,11 +4,7 @@ import plotly.express as px
 from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
-st.markdown('<i style="color:red;">Toto je pracovní verze.</i>', unsafe_allow_html=True)
-st.markdown('<i style="color:red;">Data s vyjímkou budoucího růstu pochází z oec.world.</i>', unsafe_allow_html=True)
-st.markdown('<i style="color:red;">Projekce 2025-30 berte s velikou rezervou.</i>', unsafe_allow_html=True)
-with st.expander("Pozor! ⚠️"):
-    st.warning('Toto je pracovní verze\nData s vyjímkou budoucího růstu pochází z oec.world\n Projekce 2025-30 berte s velikou rezervou', icon="⚠️")
+st.warning('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII. Projekce 2025-30 berte s velikou rezervou', icon="⚠️")
 st.title("Mapa Příležitostí")
 
 # Sidebar for selecting variables
