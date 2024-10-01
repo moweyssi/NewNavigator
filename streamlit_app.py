@@ -109,7 +109,7 @@ def load_data():
                                'CZE_EUMarketShare':'CZ-EU Podíl 2022 %',
                                'rca':'Výhoda CZ 2022',
                                'EUTopExporter':'EU Největší Exportér 2022',
-                               'POPIS':'Název Produktu',
+                               'CZ_Nazev':'Název Produktu',
                                'CountryExport2030':'CZ 2030 Export CZK',
                                'EUExport2030':'EU 2030 Export CZK',
                                'CountryExport_25_30':'CZ Celkový Export 25-30 CZK',
