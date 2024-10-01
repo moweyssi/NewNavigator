@@ -330,3 +330,5 @@ st.download_button(
     file_name = "plot.html",
     mime="text/html"
 )
+
+st.dataframe(filtered_df[filtered_df['Název Produktu'].isin(HS_select)])
