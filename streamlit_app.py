@@ -203,10 +203,10 @@ if 'filters' not in st.session_state:
 
 col1, col2 = st.sidebar.columns(2)
 with col1:
-    if st.button("Add a filter"):
+    if st.button("Přidat filtr"):
         st.session_state.filters.append({'column': None, 'range': None})
 with col2:
-    if st.button("Clear filters"):
+    if st.button("Odstranit filtry"):
         st.session_state.filters = []
 
 # Display existing filters using display names
@@ -241,9 +241,9 @@ HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
-if st.sidebar.button('Reload Data'):
+if st.sidebar.button('Obnovit Data'):
     load_data.clear()  # This will clear the cache for the load_data function
-    st.sidebar.write("Cache cleared!")
+    st.sidebar.write("Sušenky vyčištěny!")
 debug = st.sidebar.toggle('Debug')
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
