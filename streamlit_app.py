@@ -3,7 +3,12 @@ import pandas as pd
 import plotly.express as px
 from io import StringIO
 import plotly.io as pio
-#st.set_page_config(layout="wide")
+from PIL import Image
+im = Image.open("logo.svg")
+st.set_page_config(
+    page_title="Mapa Příležitostí",
+    page_icon=im
+)
 st.logo('logo.svg')
 st.error('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII databáze BACI. Projekce 2025-30 berte s velikou rezervou. Krom toho, že jsou odhadem, neberou v potaz inflaci.', icon="⚠️")
 st.title("Mapa Příležitostí")
