@@ -315,12 +315,14 @@ if HS_select == []:
     col1.metric("Vybraný český export za rok 2022", "{:,.0f}".format(sum(filtered_df['CZ Export 2022 CZK'])/1000000000),'miliard CZK' )
     col2.metric("Vybraný český export 2025 až 2030", "{:,.0f}".format(sum(filtered_df['CZ Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
     col3.metric("Vybraný evropský export 2025 až 2030", "{:,.0f}".format(sum(filtered_df['EU Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
-    st.dataframe(filtered_df[filtered_df['Název Produktu'].isin(HS_select)])
+    st.dataframe(filtered_df)
 else:
     col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000000),'miliard CZK' )
     col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
     col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
-    st.dataframe(filtered_df)
+    
+    st.dataframe(filtered_df[filtered_df['Název Produktu'].isin(HS_select)])
+
 
 mybuff = StringIO()
 fig.write_html(mybuff, include_plotlyjs='cdn')
