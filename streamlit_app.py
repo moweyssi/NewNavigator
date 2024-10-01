@@ -5,7 +5,7 @@ from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
 st.logo('logo.svg')
-st.error('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII databáze BACI. Projekce 2025-30 berte s velikou rezervou. Krom toho, že jsou odhadem, neberou také v potaz inflaci.', icon="⚠️")
+st.error('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII databáze BACI. Projekce 2025-30 berte s velikou rezervou. Krom toho, že jsou odhadem, neberou v potaz inflaci.', icon="⚠️")
 st.title("Mapa Příležitostí")
 
 # Sidebar for selecting variables
