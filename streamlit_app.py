@@ -81,6 +81,7 @@ color_discrete_map = {
 
 
 # Load data
+@st.cache_data
 def load_data():
     # Replace with the path to your data file
     df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
@@ -248,6 +249,11 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
+# Create a button in the sidebar that clears the cache
+if st.sidebar.button('Reload Data'):
+    load_data.clear()  # This will clear the cache for the load_data function
+    st.sidebar.write("Cache cleared!")
+
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
 hover_data = {col: True for col in hover_info}
