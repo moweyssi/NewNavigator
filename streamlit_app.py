@@ -86,6 +86,7 @@ def load_data():
     df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
     url = 'https://docs.google.com/spreadsheets/d/1440MNmn8N_mIPqW6ZrPv4RDG-_kPy7oUYsik4sMF3o8/gviz/tq?tqx=out:csv'
     taxonomy = pd.read_csv(url)
+    st.dataframe(taxonomy)
     CZE = pd.read_csv('CZE.csv')
     GreenProducts = taxonomy.merge(CZE,how='left',left_on='HS_ID',right_on='prod')
     # Calculate 2030 export value
