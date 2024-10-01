@@ -122,8 +122,6 @@ def load_data():
     df['EU Světový Podíl 2022 %'] = 100 * df['EU Světový Podíl 2022 %'] 
     df['CZ Světový Podíl 2022 %'] = 100 * df['CZ Světový Podíl 2022 %'] 
     df['CZ Export 2022 CZK']        = USD_to_czk*df['CZ Export 2022 CZK'] 
-    #df['EU_Import_2022']        = USD_to_czk*df['EU_Import_2022'] 
-    #df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
     df['Světový export 2022 CZK']      = USD_to_czk*df['Světový export 2022 CZK'] 
     df['EU Export 2022 CZK']        = USD_to_czk*df['EU Export 2022 CZK'] 
     df['EU Celkový Export 25-30 CZK'] = USD_to_czk*df['EU Celkový Export 25-30 CZK'] 
@@ -145,8 +143,6 @@ plot_display_names = [
     'Koncentrace evropského exportu 2022',
     'Komplexita výrobku 2022',
     'CZ Export 2022 CZK',
-    #'EU Import 2022 CZK',
-    #'CZ Import 2022 CZK',
     'Světový export 2022 CZK',
     'EU Export 2022 CZK',
     'EU Světový Podíl 2022 %',
@@ -165,10 +161,7 @@ plot_display_names = [
 
 hover_display_data = [
     'HS_ID',
-    'Produkt_HS6',
     'Název Produktu',
-    #'Produkt_HS4',
-    #'Produkt_HS2',
     'CZ Celkový Export 25-30 CZK',
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
@@ -177,8 +170,6 @@ hover_display_data = [
     'EU Největší Exportér 2022',
     'Komplexita výrobku 2022',
     'CZ Export 2022 CZK',
-    #'EU Import 2022 CZK',
-    'CZ Import 2022 CZK',
     'Světový export 2022 CZK',
     'EU Export 2022 CZK',
     'EU Světový Podíl 2022 %',
@@ -187,6 +178,7 @@ hover_display_data = [
     'CZ 2030 Export CZK',
     'CZ Celkový Export 25-30 CZK',
     'EU 2030 Export',
+    'ubiquity',
     'EU Celkový Export 25-30 CZK',
     'CAGR 2022-2030 Předpověď',
     'Zdroj',
@@ -268,9 +260,7 @@ if HS_select == []:
                      color=color,
                      color_discrete_map=color_discrete_map,  # Hard-code the colors
                      labels={x_axis: x_axis, y_axis: y_axis},
-                     #title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
-                     #height='100%',
                      opacity=0.7,
                      size=markersize,
                      size_max=40)
@@ -285,7 +275,6 @@ else:
                      labels={x_axis: x_axis, y_axis: y_axis},
                      title=f'{x_axis} vs {y_axis} barva podle {color}',
                      hover_data=hover_data,
-                     #height=700,
                      opacity=0.7,
                      size=markersize,
                      size_max=40
@@ -293,8 +282,6 @@ else:
 
 fig.update_layout(
     hoverlabel=dict(
-        #bgcolor="white",
-        #font_size=16,
         font_family="verdana"
     ),
         legend=dict(
