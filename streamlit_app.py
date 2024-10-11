@@ -88,7 +88,7 @@ color_discrete_map = {
 @st.cache_data
 def load_data():
     # Replace with the path to your data file
-    df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
+    #df                          = pd.read_csv('GreenComplexity_CZE_2022.csv')
     url = 'https://docs.google.com/spreadsheets/d/1mhv7sJC5wSqJRXdfyFaWtBuEpX6ENj2c/gviz/tq?tqx=out:csv'
     taxonomy = pd.read_csv(url)
     CZE = pd.read_csv('CZE.csv')
