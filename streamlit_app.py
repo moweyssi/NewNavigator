@@ -242,7 +242,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
+HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_ID'])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
