@@ -235,10 +235,14 @@ filtered_df = df.copy()
 # Apply color filter
 skupiny = df['Skupina'].unique()
 Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
-podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
-Podkupina = st.sidebar.multiselect('Podkupina',podskupiny,default=podskupiny)
+filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
 
-filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
+podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
+Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
+filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
+
+
+#filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
 # Apply numerical filters
 for filter in st.session_state.filters:
