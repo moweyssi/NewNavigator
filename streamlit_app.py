@@ -209,6 +209,10 @@ hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hove
 # Sidebar for filtering the color variable
 #color_values    = df[color].unique()
 #selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color}", options=color_values, default=color_values)
+skupiny = df['Skupina'].unique()
+Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
+podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
+Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -232,17 +236,10 @@ for i, filter in enumerate(st.session_state.filters):
 
 # Apply filters to dataframe
 filtered_df = df.copy()
-# Apply color filter
-skupiny = df['Skupina'].unique()
-Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
+
+
 filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
-
-podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
-Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
 filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
-
-
-#filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
 # Apply numerical filters
 for filter in st.session_state.filters:
