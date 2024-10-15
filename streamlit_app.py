@@ -238,8 +238,6 @@ for filter in st.session_state.filters:
 # Replace negative values in markersize column with zero
 filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 
-st.dataframe(filtered_df[filtered_df['HS_ID']=='854142'])
-
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
