@@ -203,12 +203,8 @@ x_axis      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=0)
 y_axis      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=4)
 markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=5)
 color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
-hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
 
 
-# Sidebar for filtering the color variable
-#color_values    = df[color].unique()
-#selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color}", options=color_values, default=color_values)
 skupiny = df['Skupina'].unique()
 Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
 podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
@@ -257,6 +253,7 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_ID'])
+hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
