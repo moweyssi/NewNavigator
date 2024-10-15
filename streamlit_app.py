@@ -240,7 +240,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 
 
 # Remove NA values
-filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
+#filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 st.dataframe(filtered_df[filtered_df['HS_ID']=='854142'])
 
