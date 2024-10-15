@@ -207,8 +207,8 @@ hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hove
 
 
 # Sidebar for filtering the color variable
-color_values    = df[color].unique()
-selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color}", options=color_values, default=color_values)
+#color_values    = df[color].unique()
+#selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color}", options=color_values, default=color_values)
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -222,14 +222,14 @@ with col2:
     if st.button("Odstranit filtry"):
         st.session_state.filters = []
 
-## Display existing filters using display names
-#for i, filter in enumerate(st.session_state.filters):
-#    filter_col= st.sidebar.selectbox(f"Filter {i+1} column", plot_display_names, key=f"filter_col_{i}")
-#    filter_min, filter_max = df[filter_col].min(), df[filter_col].max()
-#    filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
-#    st.session_state.filters[i]['column'] = filter_col
-#    st.session_state.filters[i]['range'] = filter_range
-#
+# Display existing filters using display names
+for i, filter in enumerate(st.session_state.filters):
+    filter_col= st.sidebar.selectbox(f"Filter {i+1} column", plot_display_names, key=f"filter_col_{i}")
+    filter_min, filter_max = df[filter_col].min(), df[filter_col].max()
+    filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
+    st.session_state.filters[i]['column'] = filter_col
+    st.session_state.filters[i]['range'] = filter_range
+
 # Apply filters to dataframe
 filtered_df = df.copy()
 # Apply color filter
