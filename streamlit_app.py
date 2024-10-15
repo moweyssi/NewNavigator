@@ -226,7 +226,6 @@ for i, filter in enumerate(st.session_state.filters):
 filtered_df = df.copy()
 # Apply color filter
 filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
-st.dataframe(filtered_df[filtered_df['HS_ID']=='854142'])
 
 # Apply numerical filters
 for filter in st.session_state.filters:
@@ -238,6 +237,7 @@ for filter in st.session_state.filters:
 
 # Replace negative values in markersize column with zero
 filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
+st.dataframe(filtered_df[filtered_df['HS_ID']=='854142'])
 
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
