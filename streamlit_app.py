@@ -233,6 +233,8 @@ for i, filter in enumerate(st.session_state.filters):
 # Apply filters to dataframe
 filtered_df = df.copy()
 # Apply color filter
+skupiny = df['Skupina'].unique()
+Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
 filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
 # Apply numerical filters
