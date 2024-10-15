@@ -272,7 +272,7 @@ if HS_select == []:
     
 
 else:
-    fig = px.scatter(filtered_df[filtered_df['Název Produktu'].isin(HS_select)],
+    fig = px.scatter(filtered_df[filtered_df['HS_ID'].isin(HS_select)],
                      x=x_axis,
                      y=y_axis,
                      color=color,
