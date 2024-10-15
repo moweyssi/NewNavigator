@@ -224,7 +224,7 @@ for i, filter in enumerate(st.session_state.filters):
 
 # Apply filters to dataframe
 filtered_df = df.copy()
-
+st.dataframe(filtered_df.loc[filtered_df['HS ID']==854142])
 # Apply color filter
 filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
