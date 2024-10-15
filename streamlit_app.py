@@ -201,7 +201,7 @@ hover_display_data = [
 # Sidebar selection boxes using display names
 x_axis      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=4)
 y_axis      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=5)
-markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=10)
+markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=9)
 color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 
 
