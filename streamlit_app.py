@@ -308,12 +308,12 @@ percentage = [
 for col in hover_info:
     # If the column is in no_decimal, format with no decimals and thousands separator
     if col in no_decimal:
-        hover_data[col] = ':.0f'  # No decimals, thousands separator
+        hover_data[col] = '{:,.0f}'  # No decimals, thousands separator
     # If the column is in three_sigfig, format with 3 significant digits
     elif col in three_sigfig:
-        hover_data[col] = ':.3r'
+        hover_data[col] = '{:.3f}'
     elif col in percentage:
-        hover_data[col] = ':.3r%'
+        hover_data[col] = '{:.3f}%'
     else:
         hover_data[col] = True  # No formatting needed, just show the column
     
