@@ -224,6 +224,8 @@ if filtrovat_dle_skupin:
     filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
     filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 
+hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název Produktu',x_axis,y_axis])
+
 # Filter section
 if 'filters' not in st.session_state:
     st.session_state.filters = []
@@ -260,7 +262,6 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_ID'])
-hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název Produktu',x_axis,y_axis])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
