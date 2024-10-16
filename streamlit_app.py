@@ -370,23 +370,6 @@ fig.update_layout(
     plot_bgcolor=background_color,
     paper_bgcolor = background_color          
 )
-# Build hovertemplate based on hover_data settings
-hovertemplate = ''
-
-# Customizing the hovertemplate for the columns in hover_data
-for col, format_spec in hover_data.items():
-    if isinstance(format_spec, str):
-        # Add a custom hover format for the column with a colon separator
-        hovertemplate += f'{col}: %{{customdata[{col}]}}<br>'
-    else:
-        # Default formatting for boolean True/False columns
-        hovertemplate += f'{col}: %{{{col}}}<br>'
-
-# Removing any extra information with <extra></extra>
-hovertemplate += '<extra></extra>'
-
-# Applying to the figure
-fig.update_traces(hovertemplate=hovertemplate)
 
 st.plotly_chart(fig)
 col1, col2, col3 = st.columns(3)
