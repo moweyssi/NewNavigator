@@ -294,12 +294,14 @@ three_sigfig = [
     'Koncentrace světového trhu 2022',
     'Koncentrace evropského exportu 2022',
     'Komplexita výrobku 2022',
-    'EU Světový Podíl 2022 %',
-    'CZ Světový Podíl 2022 %',
-    'CZ-EU Podíl 2022 %',
     'Percentil příbuznosti CZ 2022',
     'Percentil komplexity 2022',
     'CAGR 2022-2030 Předpověď',
+]
+percentage = [
+    'EU Světový Podíl 2022 %',
+    'CZ Světový Podíl 2022 %',
+    'CZ-EU Podíl 2022 %',
 ]
 
 # Iterate over the columns in hover_info
@@ -309,11 +311,9 @@ for col in hover_info:
         hover_data[col] = ':.0f'  # No decimals, thousands separator
     # If the column is in three_sigfig, format with 3 significant digits
     elif col in three_sigfig:
-        # If the column represents a percentage, add a '%' symbol
-        if '%' in col:
-            hover_data[col] = ':.3r%'  # Three significant digits with percentage
-        else:
-            hover_data[col] = ':.3r'  # Three significant digits, no percentage
+        hover_data[col] = ':.3r'
+    elif col in percentage:
+        hover_data[col] = ':.3r%'
     else:
         hover_data[col] = True  # No formatting needed, just show the column
     
