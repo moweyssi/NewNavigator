@@ -195,13 +195,10 @@ hover_display_data = [
     'EU 2030 Export',
     'ubiquity',
     'EU Celkový Export 25-30 CZK',
-    'CAGR 2022-2030 Předpověď',
-    'Zdroj',
     'Percentil příbuznosti CZ 2022',
     'Percentil komplexity 2022',
     'Žebříček příbuznosti CZ 2022',
     'Žebříček komplexity 2022',
-    'IS_REALCAGR'
 ]
 
 # Sidebar selection boxes using display names
@@ -309,6 +306,13 @@ percentage = [
     'CZ-EU Podíl 2022 %',
 ]
 
+texthover = [
+    'Skupina',
+    'Podskupina',
+    'Název Produktu',
+    'EU Největší Exportér 2022'
+]
+
 # Iterate over the columns in hover_info
 for col in hover_info:
     # If the column is in no_decimal, format with no decimals and thousands separator
@@ -319,6 +323,8 @@ for col in hover_info:
         hover_data[col] = ':.2f'
     elif col in percentage:
         hover_data[col] = ':.1f'  # Three decimal places, with percentage symbol
+    elif col in texthover:
+        hover_data[col] = True
     else:
         hover_data[col] = False  # No formatting needed, just show the column
     
@@ -328,6 +334,8 @@ hover_data.setdefault(x_axis, False)
 hover_data.setdefault(y_axis, False)
 hover_data.setdefault('Skupina', False)
 hover_data.setdefault('Podskupina', False)
+hover_data.setdefault('Název produktu', True)
+
 
 if HS_select == []:
     fig = px.scatter(filtered_df,
