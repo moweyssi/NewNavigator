@@ -214,7 +214,7 @@ color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 # Apply filters to dataframe
 filtered_df = df.copy()
 
-filtrovat_dle_skupin = st.toggle("Filtrovat dle skupin")
+filtrovat_dle_skupin = st.sidebar.toggle("Filtrovat dle skupin")
 
 if filtrovat_dle_skupin:
     skupiny = df['Skupina'].unique()
