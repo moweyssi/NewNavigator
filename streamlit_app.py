@@ -118,7 +118,7 @@ def load_data():
                                'CZE_EUMarketShare':'CZ-EU Podíl 2022 %',
                                'rca':'Výhoda CZ 2022',
                                'EUTopExporter':'EU Největší Exportér 2022',
-                               'CZ_Nazev':'Název Produktu',
+                               'CZ_Nazev':'Název',
                                'CountryExport2030':'CZ 2030 Export CZK',
                                'EUExport2030':'EU 2030 Export CZK',
                                'CountryExport_25_30':'CZ Celkový Export 25-30 CZK',
@@ -176,7 +176,7 @@ hover_display_data = [
     'HS_ID',
     'Skupina',
     'Podskupina',
-    'Název Produktu',
+    'Název',
     'CZ Celkový Export 25-30 CZK',
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
@@ -221,7 +221,7 @@ if filtrovat_dle_skupin:
     filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
     filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 
-hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název Produktu',x_axis,y_axis])
+hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název',x_axis,y_axis])
 st.sidebar.divider()
 # Filter section
 if 'filters' not in st.session_state:
@@ -309,7 +309,7 @@ percentage = [
 texthover = [
     'Skupina',
     'Podskupina',
-    'Název Produktu',
+    'Název',
     'EU Největší Exportér 2022'
 ]
 
@@ -334,7 +334,7 @@ hover_data.setdefault(x_axis, False)
 hover_data.setdefault(y_axis, False)
 hover_data.setdefault('Skupina', False)
 hover_data.setdefault('Podskupina', False)
-hover_data.setdefault('Název Produktu', True)
+hover_data.setdefault('Název', True)
 
 
 if HS_select == []:
@@ -390,11 +390,11 @@ if HS_select == []:
         #st.dataframe(filtered_df)
         st.dataframe(df)
 else:
-    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000000),'miliard CZK' )
-    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
-    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název Produktu'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
+    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000000),'miliard CZK' )
+    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
+    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
     if debug:
-        st.dataframe(filtered_df[filtered_df['Název Produktu'].isin(HS_select)])
+        st.dataframe(filtered_df[filtered_df['Název'].isin(HS_select)])
 
 
 mybuff = StringIO()
