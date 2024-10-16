@@ -392,11 +392,11 @@ if HS_select == []:
         #st.dataframe(filtered_df)
         st.dataframe(df)
 else:
-    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000),'milionů CZK' )
-    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
-    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
+    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000),'milionů CZK' )
+    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
+    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
     if debug:
-        st.dataframe(filtered_df[filtered_df['Název'].isin(HS_select)])
+        st.dataframe(filtered_df[filtered_df['HS_ID'].isin(HS_select)])
 
 
 mybuff = StringIO()
