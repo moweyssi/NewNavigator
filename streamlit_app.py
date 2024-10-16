@@ -232,10 +232,10 @@ if 'filters' not in st.session_state:
 
 col1, col2 = st.sidebar.columns(2)
 with col1:
-    if st.button("Přidat číselný filtr"):
+    if st.button("Filtrování hodnot"):
         st.session_state.filters.append({'column': None, 'range': None})
 with col2:
-    if st.button("Odstranit číselné filtry"):
+    if st.button("Odstranit filtry"):
         st.session_state.filters = []
 
 # Display existing filters using display names
