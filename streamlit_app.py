@@ -334,7 +334,7 @@ hover_data.setdefault(x_axis, False)
 hover_data.setdefault(y_axis, False)
 hover_data.setdefault('Skupina', False)
 hover_data.setdefault('Podskupina', False)
-hover_data.setdefault('Název produktu', True)
+hover_data.setdefault('Název Produktu', True)
 
 
 if HS_select == []:
