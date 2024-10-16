@@ -257,7 +257,7 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_ID'])
-hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
+hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název Produktu',x_axis,y_axis])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
@@ -319,9 +319,7 @@ for col in hover_info:
         hover_data[col] = True  # No formatting needed, just show the column
     
 # Ensure x_axis, y_axis, and markersize default to False if not explicitly provided in hover_info
-hover_data.setdefault(x_axis, False)
-hover_data.setdefault(y_axis, False)
-hover_data.setdefault(markersize, False)
+#hover_data.setdefault(markersize, False)
 
 if HS_select == []:
     fig = px.scatter(filtered_df,
