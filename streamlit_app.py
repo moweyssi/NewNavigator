@@ -360,7 +360,6 @@ else:
                      color=color,
                      color_discrete_map=color_discrete_map,  # Hard-code the colors
                      labels={x_axis: x_axis, y_axis: y_axis},
-                     title=f'{x_axis} vs {y_axis} barva podle {color}',
                      hover_data=hover_data,
                      opacity=0.7,
                      size=markersize,
@@ -393,9 +392,9 @@ if HS_select == []:
         #st.dataframe(filtered_df)
         st.dataframe(df)
 else:
-    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000000),'miliard CZK' )
-    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
-    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000000), "miliard CZK")
+    col1.metric("Vybraný český export za rok 2022", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000),'milionů CZK' )
+    col2.metric("Vybraný český export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
+    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.1f}".format(sum(filtered_df[filtered_df['Název'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
     if debug:
         st.dataframe(filtered_df[filtered_df['Název'].isin(HS_select)])
 
