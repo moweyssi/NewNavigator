@@ -296,7 +296,7 @@ for col in hover_info:
     if col in no_decimal:
         hover_data[col] = ':.0r'
     elif col in one_sigfig:
-        hover_data[col] = ':.1r'
+        hover_data[col] = ':.2r'
     else:
         hover_data[col] = True  # No formatting needed, just show the column
 
