@@ -308,7 +308,8 @@ fig.update_layout(
         x=0.5             # Position it at the center of the graph
     ),
     plot_bgcolor=background_color,
-    paper_bgcolor = background_color
+    paper_bgcolor = background_color,
+    hovermode='x unified'
     
                 
 )
