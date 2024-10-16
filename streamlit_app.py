@@ -358,7 +358,8 @@ else:
 
 fig.update_layout(
     hoverlabel=dict(
-        font_family="verdana"
+        font_family="verdana",
+        bgcolor="grey"
     ),
         legend=dict(
         orientation="h",  # Horizontal legend
