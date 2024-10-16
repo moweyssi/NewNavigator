@@ -287,7 +287,7 @@ no_decimal = [
 ]
 
 # Columns requiring three significant figures and percentage formatting
-three_sigfig = [
+two_sigfig = [
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
     'Koncentrace světového trhu 2022',
@@ -311,10 +311,10 @@ for col in hover_info:
     if col in no_decimal:
         hover_data[col] = ':,.0f'  # No decimals, thousands separator
     # If the column is in three_sigfig, format with 3 decimal places
-    elif col in three_sigfig:
-        hover_data[col] = ':.3f'
+    elif col in two_sigfig:
+        hover_data[col] = ':.2f'
     elif col in percentage:
-        hover_data[col] = ':.2f'  # Three decimal places, with percentage symbol
+        hover_data[col] = ':.1f'  # Three decimal places, with percentage symbol
     else:
         hover_data[col] = True  # No formatting needed, just show the column
     
