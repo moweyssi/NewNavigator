@@ -225,7 +225,7 @@ if filtrovat_dle_skupin:
     filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 
 hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název Produktu',x_axis,y_axis])
-
+st.sidebar.divider()
 # Filter section
 if 'filters' not in st.session_state:
     st.session_state.filters = []
