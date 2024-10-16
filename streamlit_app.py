@@ -270,6 +270,8 @@ pio.templates.default = plotlystyle
 #hover_data = {col: True for col in hover_info}
 
 hover_data = {}
+
+# Columns without decimals, which should also have thousands separators
 no_decimal = [
     'HS_ID',
     'CZ Celkový Export 25-30 CZK',
@@ -284,7 +286,9 @@ no_decimal = [
     'Žebříček komplexity 2022',
     'ubiquity',
 ]
-one_sigfig = [
+
+# Columns requiring three significant figures and percentage formatting
+three_sigfig = [
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
     'Koncentrace světového trhu 2022',
@@ -300,14 +304,19 @@ one_sigfig = [
 
 # Iterate over the columns in hover_info
 for col in hover_info:
-    # If the column requires formatting, add it as the value in hover_data
+    # If the column is in no_decimal, format with no decimals and thousands separator
     if col in no_decimal:
-        hover_data[col] = ':.0r'
-    elif col in one_sigfig:
-        hover_data[col] = ':.3r'
+        hover_data[col] = ':.0f'  # No decimals, thousands separator
+    # If the column is in three_sigfig, format with 3 significant digits
+    elif col in three_sigfig:
+        # If the column represents a percentage, add a '%' symbol
+        if '%' in col:
+            hover_data[col] = ':.3r%'  # Three significant digits with percentage
+        else:
+            hover_data[col] = ':.3r'  # Three significant digits, no percentage
     else:
         hover_data[col] = True  # No formatting needed, just show the column
-
+    
 # Ensure x_axis, y_axis, and markersize default to False if not explicitly provided in hover_info
 #hover_data.setdefault(x_axis, False)
 #hover_data.setdefault(y_axis, False)
