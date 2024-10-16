@@ -214,11 +214,11 @@ color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 # Apply filters to dataframe
 filtered_df = df.copy()
 
-filtrovat_dle_skupin = st.sidebar.toggle("Filtrovat dle skupin")
+filtrovat_dle_skupin = st.sidebar.toggle("Filtrovat dle skupin",value=False)
 
 if filtrovat_dle_skupin:
     skupiny = df['Skupina'].unique()
-    Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
+    Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny[0])
     podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
     Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
     filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
