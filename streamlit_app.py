@@ -205,7 +205,6 @@ hover_display_data = [
 x_axis      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=4)
 y_axis      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=5)
 markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=9)
-color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 
 
 # Apply filters to dataframe
@@ -214,13 +213,16 @@ filtered_df = df.copy()
 filtrovat_dle_skupin = st.sidebar.toggle("Filtrovat dle skupin",value=False)
 
 if filtrovat_dle_skupin:
-    color = 'Podskupina'
+    color       = st.sidebar.selectbox("Barva dle:", ji_display_names,index = 1)
     skupiny = df['Skupina'].unique()
     Skupina = st.sidebar.multiselect('Skupina',skupiny,default=[])
     podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
     Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
     filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
     filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
+else:
+    color       = st.sidebar.selectbox("Barva dle:", ji_display_names,index = 0)
+
 
 hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název',x_axis,y_axis])
 st.sidebar.divider()
