@@ -211,10 +211,18 @@ markersize  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=9)
 color       = st.sidebar.selectbox("Barva dle:", ji_display_names)
 
 
-skupiny = df['Skupina'].unique()
-Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
-podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
-Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
+# Apply filters to dataframe
+filtered_df = df.copy()
+
+filtrovat_dle_skupin = st.toggle("Filtrovat dle skupin")
+
+if filtrovat_dle_skupin:
+    skupiny = df['Skupina'].unique()
+    Skupina = st.sidebar.multiselect('Skupina',skupiny,default=skupiny)
+    podskupiny = df['Podskupina'][df['Skupina'].isin(Skupina)].unique()
+    Podskupina = st.sidebar.multiselect('Podskupina',podskupiny,default=podskupiny)
+    filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
+    filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -235,13 +243,6 @@ for i, filter in enumerate(st.session_state.filters):
     filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
     st.session_state.filters[i]['column'] = filter_col
     st.session_state.filters[i]['range'] = filter_range
-
-# Apply filters to dataframe
-filtered_df = df.copy()
-
-
-filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
-filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 
 # Apply numerical filters
 for filter in st.session_state.filters:
