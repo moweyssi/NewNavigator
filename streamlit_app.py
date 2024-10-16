@@ -313,9 +313,8 @@ for col in hover_info:
     # If the column is in three_sigfig, format with 3 decimal places
     elif col in three_sigfig:
         hover_data[col] = ':.3f'
-    # If the column is in percentage, format with 3 decimal places and append a %
     elif col in percentage:
-        hover_data[col] = ':%.3f'  # Three decimal places, with percentage symbol
+        hover_data[col] = ':.2f'  # Three decimal places, with percentage symbol
     else:
         hover_data[col] = True  # No formatting needed, just show the column
     
