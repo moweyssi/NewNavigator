@@ -195,6 +195,10 @@ hover_display_data = [
     'EU Celkový Export 25-30 CZK',
     'CAGR 2022-2030 Předpověď',
     'Zdroj',
+    'Percentil příbuznosti CZ 2022',
+    'Percentil komplexity 2022',
+    'Žebříček příbuznosti CZ 2022',
+    'Žebříček komplexity 2022',
     'IS_REALCAGR'
 ]
 
