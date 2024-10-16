@@ -284,6 +284,8 @@ no_decimal = [
     'Žebříček příbuznosti CZ 2022',
     'Žebříček komplexity 2022',
     'ubiquity',
+    'Percentil příbuznosti CZ 2022',
+    'Percentil komplexity 2022',
 ]
 
 # Columns requiring three significant figures and percentage formatting
@@ -301,8 +303,6 @@ percentage = [
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
-    'Percentil příbuznosti CZ 2022',
-    'Percentil komplexity 2022',
 ]
 
 # Iterate over the columns in hover_info
