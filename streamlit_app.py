@@ -293,8 +293,6 @@ two_sigfig = [
     'Koncentrace světového trhu 2022',
     'Koncentrace evropského exportu 2022',
     'Komplexita výrobku 2022',
-    'Percentil příbuznosti CZ 2022',
-    'Percentil komplexity 2022',
     'CAGR 2022-2030 Předpověď',
 ]
 
@@ -303,6 +301,8 @@ percentage = [
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
+    'Percentil příbuznosti CZ 2022',
+    'Percentil komplexity 2022',
 ]
 
 # Iterate over the columns in hover_info
