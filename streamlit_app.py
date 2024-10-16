@@ -370,9 +370,7 @@ fig.update_layout(
     plot_bgcolor=background_color,
     paper_bgcolor = background_color          
 )
-fig.update_traces(
-    hovertemplate='%{label}: %{value}<extra></extra>'
-)
+
 st.plotly_chart(fig)
 col1, col2, col3 = st.columns(3)
 if HS_select == []:
