@@ -276,6 +276,8 @@ no_decimal = [
     'CZ Celkový Export 25-30 CZK',
     'EU 2030 Export',
     'EU Celkový Export 25-30 CZK',
+    'Žebříček příbuznosti CZ 2022',
+    'Žebříček komplexity 2022',
 ]
 one_sigfig = [
     'Příbuznost CZ 2022',
@@ -287,6 +289,8 @@ one_sigfig = [
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
     'ubiquity',
+    'Percentil příbuznosti CZ 2022',
+    'Percentil komplexity 2022',
     'CAGR 2022-2030 Předpověď',
 ]
 
