@@ -263,7 +263,43 @@ if st.sidebar.button('Obnovit Data'):
 debug = st.sidebar.toggle('Debug')
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
-hover_data = {col: True for col in hover_info}
+#hover_data = {col: True for col in hover_info}
+
+hover_data = {}
+no_decimal = [
+    'HS_ID',
+    'CZ Celkový Export 25-30 CZK',
+    'CZ Export 2022 CZK',
+    'Světový export 2022 CZK',
+    'EU Export 2022 CZK',
+    'CZ 2030 Export CZK',
+    'CZ Celkový Export 25-30 CZK',
+    'EU 2030 Export',
+    'EU Celkový Export 25-30 CZK',
+]
+one_sigfig = [
+    'Příbuznost CZ 2022',
+    'Výhoda CZ 2022',
+    'Koncentrace světového trhu 2022',
+    'Koncentrace evropského exportu 2022',
+    'Komplexita výrobku 2022',
+    'EU Světový Podíl 2022 %',
+    'CZ Světový Podíl 2022 %',
+    'CZ-EU Podíl 2022 %',
+    'ubiquity',
+    'CAGR 2022-2030 Předpověď',
+]
+
+# Iterate over the columns in hover_info
+for col in hover_info:
+    # If the column requires formatting, add it as the value in hover_data
+    if col in no_decimal:
+        hover_data[col] = ':.0r'
+    elif col in one_sigfig:
+        hover_data[col] = ':.1r'
+    else:
+        hover_data[col] = True  # No formatting needed, just show the column
+
 # Ensure x_axis, y_axis, and markersize default to False if not explicitly provided in hover_info
 hover_data.setdefault(x_axis, False)
 hover_data.setdefault(y_axis, False)
