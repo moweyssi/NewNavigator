@@ -262,7 +262,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 
-HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_ID'])
+HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['HS_Lookup'])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
@@ -355,7 +355,7 @@ if HS_select == []:
     
 
 else:
-    fig = px.scatter(filtered_df[filtered_df['HS_ID'].isin(HS_select)],
+    fig = px.scatter(filtered_df[filtered_df['HS_Lookup'].isin(HS_select)],
                      x=x_axis,
                      y=y_axis,
                      color=color,
@@ -393,11 +393,11 @@ if HS_select == []:
         #st.dataframe(filtered_df)
         st.dataframe(df)
 else:
-    col1.metric("Vybraný český export za rok 2022", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000),'milionů CZK' )
-    col2.metric("Vybraný český export 2025 až 2030", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
-    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_ID'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
+    col1.metric("Vybraný český export za rok 2022", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_Lookup'].isin(HS_select)]['CZ Export 2022 CZK'])/1000000),'milionů CZK' )
+    col2.metric("Vybraný český export 2025 až 2030", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_Lookup'].isin(HS_select)]['CZ Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
+    col3.metric("Vybraný evropský export 2025 až 2030", "{:,.0f}".format(sum(filtered_df[filtered_df['HS_Lookup'].isin(HS_select)]['EU Celkový Export 25-30 CZK'])/1000000), "milionů CZK")
     if debug:
-        st.dataframe(filtered_df[filtered_df['HS_ID'].isin(HS_select)])
+        st.dataframe(filtered_df[filtered_df['HS_Lookup'].isin(HS_select)])
 
 
 mybuff = StringIO()
