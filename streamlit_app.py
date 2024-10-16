@@ -316,7 +316,7 @@ for col in hover_info:
     elif col in percentage:
         hover_data[col] = ':.1f'  # Three decimal places, with percentage symbol
     else:
-        hover_data[col] = True  # No formatting needed, just show the column
+        hover_data[col] = False  # No formatting needed, just show the column
     
 # Ensure x_axis, y_axis, and markersize default to False if not explicitly provided in hover_info
 hover_data.setdefault(markersize, False)
