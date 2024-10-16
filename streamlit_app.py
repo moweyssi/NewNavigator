@@ -221,7 +221,7 @@ if filtrovat_dle_skupin:
     filtered_df = filtered_df[filtered_df['Skupina'].isin(Skupina)]
     filtered_df = filtered_df[filtered_df['Podskupina'].isin(Podskupina)]
 else:
-    color       = st.sidebar.selectbox("Barva dle:", ji_display_names,index = 0)
+    color       = 'Skupina'
 
 
 hover_info  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default=['Název',x_axis,y_axis])
