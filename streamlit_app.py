@@ -322,6 +322,8 @@ for col in hover_info:
 hover_data.setdefault(markersize, False)
 hover_data.setdefault(x_axis, False)
 hover_data.setdefault(y_axis, False)
+hover_data.setdefault(Skupina, False)
+hover_data.setdefault(Podskupina, False)
 
 if HS_select == []:
     fig = px.scatter(filtered_df,
