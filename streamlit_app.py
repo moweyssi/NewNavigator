@@ -6,7 +6,7 @@ import plotly.io as pio
 from PIL import Image
 
 st.set_page_config(
-    page_title="Mapa Příležitostí",
+    page_title="Mapa PříležitoStí",
     page_icon="favicon.png"
 )
 st.logo('logo.svg')
