@@ -6,12 +6,12 @@ import plotly.io as pio
 from PIL import Image
 
 st.set_page_config(
-    page_title="Mapa PříležitoStí",
+    page_title="Mapa Příležitostí",
     page_icon="favicon.png"
 )
 st.logo('logo.svg')
 st.error('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII databáze BACI. Projekce 2025-30 berte s velikou rezervou. Krom toho, že jsou odhadem, neberou v potaz inflaci.', icon="⚠️")
-st.title("Mapa Příležitostí")
+st.title("Mapa PříležitoStí")
 
 # Sidebar for selecting variables
 st.sidebar.header("Nastavení Grafu")
