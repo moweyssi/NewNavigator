@@ -16,7 +16,7 @@ st.title("Mapa Příležitostí")
 # Sidebar for selecting variables
 st.sidebar.header("Nastavení Grafu")
 
-USD_to_czk = st.sidebar.number_input("Kurz USD vůči CZK",value=22.5)
+USD_to_czk = st.sidebar.number_input("Kurz USD vůči CZK",value=23.360)
 color_discrete_map = {
     'A02. Doprava': '#d6568c',
     'A03. Budovy': '#274001',
